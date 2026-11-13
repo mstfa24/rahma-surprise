@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>For Rahma ❤️</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07030d;color:white;font-family:Georgia,serif;overflow:hidden;height:100vh}
+#universe{position:fixed;inset:0;background:radial-gradient(ellipse at center,#30132c,#100817 55%,#030208);overflow:hidden}
+#stars{position:absolute;inset:0}
+.star{position:absolute;background:white;border-radius:50%;animation:twinkle var(--t) infinite alternate}
+@keyframes twinkle{to{opacity:.2;transform:scale(1.8)}}
+.nebula{position:absolute;width:400px;height:400px;border-radius:50%;filter:blur(100px);opacity:.17;animation:nebula 12s infinite alternate}
+.n1{background:#ff176d;top:-180px;left:-150px}
+.n2{background:#813dff;bottom:-200px;right:-150px}
+@keyframes nebula{to{transform:translate(100px,80px) scale(1.3)}}
+.screen{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;transition:1s}
+.intro{z-index:5}
+.intro.hide{opacity:0;transform:scale(1.3);pointer-events:none}
+.eyebrow{color:#f6a6c9;letter-spacing:6px;font-size:11px;margin-bottom:30px}
+.intro h1{font-size:clamp(34px,7vw,65px);font-weight:normal;line-height:1.4;text-shadow:0 0 30px #f04b9c}
+.intro h1 span{color:#ff80b7;font-style:italic}
+.intro p{color:#c8a9c6;margin-top:20px;letter-spacing:2px;font-size:12px}
+button{cursor:pointer;font-family:inherit}
+.open-btn{margin-top:45px;padding:15px 35px;border:1px solid #e875ac;border-radius:40px;background:transparent;color:white;letter-spacing:3px;transition:.4s}
+.open-btn:hover{background:#e875ac;color:#190717;box-shadow:0 0 35px #e875ac}
+.story{opacity:0;pointer-events:none;z-index:2}
+.story.active{opacity:1;pointer-events:auto}
+.story-line{font-size:clamp(17px,4vw,25px);letter-spacing:2px;color:#f5c5df;opacity:0;transform:translateY(15px);transition:1.5s}
+.story-line.show{opacity:1;transform:translateY(0)}
+.heart-area{position:relative;width:min(85vw,430px);height:min(75vw,400px);display:flex;justify-content:center;align-items:center;margin-top:5px}
+.heart-svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 15px #ff1e76)}
+.heart-outline{fill:transparent;stroke:#ff5b9c;stroke-width:2.5;stroke-dasharray:1500;stroke-dashoffset:1500}
+.story.active .heart-outline{animation:draw 4s ease forwards}
+.heart-fill{fill:#ff145e;opacity:0}
+.story.active .heart-fill{animation:fill 2s ease 3.8s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fill{to{opacity:.88}}
+.heart-inner{position:absolute;top:48%;left:50%;transform:translate(-50%,-50%);width:100%;opacity:0;transition:2s}
+.heart-inner.show{opacity:1}
+.heart-inner h2{font-size:clamp(25px,6vw,43px);letter-spacing:2px;text-shadow:0 0 10px white,0 0 25px #ff8bb8}
+.heart-inner p{font-size:clamp(17px,4vw,23px);color:#ffe0eb;margin-top:12px;letter-spacing:5px}
+.heartbeat{animation:beat 1.7s infinite}
+@keyframes beat{0%,100%{transform:translate(-50%,-50%) scale(1)}15%{transform:translate(-50%,-50%) scale(1.07)}30%{transform:translate(-50%,-50%) scale(1)}45%{transform:translate(-50%,-50%) scale(1.04)}}
+.bottom-text{position:absolute;bottom:14%;color:#eabbd6;font-size:14px;letter-spacing:2px;opacity:0;transition:2s}
+.bottom-text.show{opacity:1}
+.envelope-btn{position:absolute;bottom:5%;border:0;background:transparent;color:#ffd0e5;font-size:14px;letter-spacing:2px;opacity:0;transition:1s}
+.envelope-btn.show{opacity:1}
+.envelope-btn:hover{color:white;text-shadow:0 0 20px #ff4e98}
+.overlay{position:fixed;inset:0;z-index:10;background:#09040deF;backdrop-filter:blur(15px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:1s;padding:15px;overflow-y:auto}
+.overlay.open{opacity:1;pointer-events:auto}
+.letter{width:min(90%,430px);background:linear-gradient(145deg,#fff0f5,#f9d9e8);color:#71324f;padding:30px 25px;border-radius:8px;text-align:center;transform:translateY(40px) scale(.9);transition:1s;max-height:94vh;overflow-y:auto}
+.overlay.open .letter{transform:translateY(0) scale(1)}
+.letter h2{font-size:29px;font-weight:normal;color:#a32d65;margin-bottom:20px}
+.letter p{font-size:16px;line-height:1.9}
+.signature{margin:18px 0;font-style:italic;font-size:23px;color:#c13d79}
+.photo-frame{margin:22px auto 12px;width:min(100%,270px);padding:8px;background:linear-gradient(135deg,#fff,#f5a6c8,#fff);box-shadow:0 0 25px #e45b9a66;border-radius:5px;opacity:0;transform:translateY(25px);transition:1.5s}
+.photo-frame.show{opacity:1;transform:translateY(0)}
+.photo-frame img{width:100%;height:auto;max-height:360px;object-fit:contain;display:block}
+.photo-caption{font-size:14px;font-style:italic;color:#a32d65;margin-top:15px;line-height:1.7}
+.close{margin-top:20px;border:1px solid #b84a7c;background:transparent;color:#8a2857;padding:10px 25px;letter-spacing:2px}
+.particle{position:absolute;bottom:-30px;pointer-events:none;animation:rise linear forwards;color:#ff8dbb}
+@keyframes rise{to{transform:translateY(-110vh) rotate(360deg);opacity:0}}
+.shooting{position:absolute;width:100px;height:1px;background:linear-gradient(90deg,white,transparent);transform:rotate(-35deg);animation:shoot 1.5s linear forwards}
+@keyframes shoot{to{opacity:0;transform:translate(-300px,300px) rotate(-35deg)}}
+@media(max-height:650px){.heart-area{height:55vh;width:min(60vw,350px)}.bottom-text{bottom:10%}}
+</style>
+</head>
+<body>
+<div id="universe">
+<div id="stars"></div>
+<div class="nebula n1"></div>
+<div class="nebula n2"></div>
+</div>
+
+<div class="screen intro" id="intro">
+<div class="eyebrow">A SPECIAL PLACE IN THE UNIVERSE</div>
+<h1>There is something<br><span>beautiful</span> waiting for you...</h1>
+<p>THIS LITTLE UNIVERSE IS JUST FOR YOU</p>
+<button class="open-btn" onclick="begin()">ENTER MY UNIVERSE ✨</button>
+</div>
+
+<div class="screen story" id="story">
+<div class="story-line" id="line">Out of all the stars in the universe...</div>
+<div class="heart-area">
+<svg class="heart-svg" viewBox="0 0 500 470">
+<path class="heart-fill" d="M250 430 C190 370 35 270 35 145 C35 45 165 5 250 125 C335 5 465 45 465 145 C465 270 310 370 250 430Z"/>
+<path class="heart-outline" d="M250 430 C190 370 35 270 35 145 C35 45 165 5 250 125 C335 5 465 45 465 145 C465 270 310 370 250 430Z"/>
+</svg>
+<div class="heart-inner" id="message">
+<h2>I LOVE YOU</h2>
+<p>RAHMA ❤️</p>
+</div>
+</div>
+<div class="bottom-text" id="bottom">You are my favorite part of this universe.</div>
+<button class="envelope-btn" id="letterBtn" onclick="openLetter()">💌 OPEN YOUR LITTLE SURPRISE</button>
+</div>
+
+<div class="overlay" id="overlay">
+<div class="letter">
+<h2>Dear Rahma ❤️</h2>
+<p>
+If I could choose one place<br>
+to be in this entire universe,<br>
+I would choose to be wherever you are.<br><br>
+You make ordinary moments special,<br>
+and every day a little more beautiful.<br><br>
+I don't need a thousand stars<br>
+when I have you.
+</p>
+<div class="signature">Forever yours,<br>Mostafa ❤️</div>
+
+<div class="photo-frame" id="photoFrame">
+<img src="couple.jpg" alt="Mostafa and Rahma together">
+</div>
+
+<div class="photo-caption">
+Every love story is beautiful,<br>but ours is my favorite. ❤️
+</div>
+
+<button class="close" onclick="closeLetter()">CLOSE WITH LOVE</button>
+</div>
+</div>
+
+<script>
+const stars=document.getElementById("stars");
+for(let i=0;i<180;i++){
+let s=document.createElement("i");
+s.className="star";
+s.style.left=Math.random()*100+"%";
+s.style.top=Math.random()*100+"%";
+s.style.width=s.style.height=(Math.random()*2+1)+"px";
+s.style.opacity=Math.random();
+s.style.setProperty("--t",(1+Math.random()*3)+"s");
+stars.appendChild(s);
+}
+
+function begin(){
+document.getElementById("intro").classList.add("hide");
+document.getElementById("story").classList.add("active");
+setTimeout(()=>document.getElementById("line").classList.add("show"),500);
+setTimeout(()=>document.getElementById("message").classList.add("show","heartbeat"),5200);
+setTimeout(()=>document.getElementById("bottom").classList.add("show"),6500);
+setTimeout(()=>document.getElementById("letterBtn").classList.add("show"),8000);
+}
+
+function particle(){
+let p=document.createElement("div");
+p.className="particle";
+p.textContent=["❤","✦","♡","✨","♥"][Math.floor(Math.random()*5)];
+p.style.left=Math.random()*100+"%";
+p.style.fontSize=(12+Math.random()*18)+"px";
+p.style.animationDuration=(5+Math.random()*6)+"s";
+document.getElementById("universe").appendChild(p);
+setTimeout(()=>p.remove(),11000);
+}
+setInterval(particle,300);
+
+function shooting(){
+let s=document.createElement("div");
+s.className="shooting";
+s.style.left=(30+Math.random()*70)+"%";
+s.style.top=Math.random()*50+"%";
+document.getElementById("universe").appendChild(s);
+setTimeout(()=>s.remove(),1600);
+}
+setInterval(shooting,3500);
+
+function openLetter(){
+document.getElementById("overlay").classList.add("open");
+setTimeout(()=>document.getElementById("photoFrame").classList.add("show"),1200);
+}
+function closeLetter(){
+document.getElementById("overlay").classList.remove("open");
+}
+</script>
+</body>
+</html>
